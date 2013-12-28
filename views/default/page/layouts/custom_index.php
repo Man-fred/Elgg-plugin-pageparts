@@ -13,15 +13,7 @@ $mod_params = array('class' => 'elgg-module-highlight');
 
 <div class="custom-index elgg-main elgg-grid clearfix">
 <div class="et-mod-ule-message">
-<?php if (elgg_is_logged_in()) {
-	$top_box = "<h2>" . elgg_echo("welcome") . " ";
-	$top_box .= elgg_get_logged_in_user_entity()->name;
-	$top_box .= "</h2>";
-	echo elgg_view_module('featured',  '', $top_box.$vars['startpagemember'], $mod_params);
-} else {
-	echo elgg_view_module('featured',  '', $vars['startpageguest'], $mod_params);
-}
-?> 
+<?php echo elgg_view_module('featured',  '', $vars['startpage'], $mod_params); ?> 
 
 </div>
 	<div class="elgg-col elgg-col-1of2">

@@ -32,9 +32,13 @@ $files = elgg_list_entities($list_params);
 $list_params['subtype'] = 'event';
 $event_manager = elgg_list_entities($list_params);
 
-//grab the latest pages
-$startpageguest =elgg_view_entity(get_entity(73), array('full_view' => true));
-$startpagemember =elgg_view_entity(get_entity(73), array('full_view' => true));
+//grab the startpageinfos and latest pages
+if (elgg_is_logged_in()) {
+	$startpage = "<h2>" . elgg_echo("welcome") . " ". elgg_get_logged_in_user_entity()->name."</h2>".
+			elgg_view_entity(get_entity(74), array('full_view' => true));
+} else {
+	$startpage =elgg_view_entity(get_entity(73), array('full_view' => true));
+}
 $pages = elgg_list_entities(array(
 	'type' => 'object',
 	'subtype' => 'page',
@@ -75,8 +79,7 @@ $params = array(
 	'login' => $login,
 	'members' => $newest_members,
 	'event_manager' => $event_manager,
-	'startpageguest' => $startpageguest,
-	'startpagemember' => $startpagemember,
+	'startpage' => $startpage,
 	'pages' => $pages
 );
 $body = elgg_view_layout('custom_index', $params);
