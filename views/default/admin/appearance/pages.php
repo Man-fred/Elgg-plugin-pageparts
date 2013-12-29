@@ -2,7 +2,7 @@
 /**
  * Admin section for editing external pages
  */
-
+echo 'Bin angekommen';
 $type = get_input('type', 'about');
 
 echo elgg_view('pageparts/menu', array('type' => $type));

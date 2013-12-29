@@ -22,12 +22,15 @@ if (elgg_get_context() == 'admin') {
 }
 
 // render content before head so that JavaScript and CSS can be loaded. See #4032
-$topbar = elgg_view('page/elements/topbar', $vars);
+if (elgg_is_logged_in()) {
+	$topbar = elgg_view('page/elements/topbar', $vars);
+} else {
+	$topbar = '<div class="pageparts-topbar-info">'.elgg_echo('pageparts:not_logged_in').'</div>';
+}
 $messages = elgg_view('page/elements/messages', array('object' => $vars['sysmessages']));
 $header = elgg_view('page/elements/header', $vars);
 $body = elgg_view('page/elements/body', $vars);
 $footer = elgg_view('page/elements/footer', $vars);
-$not_logged_in = elgg_echo('pageparts:not_logged_in');
 
 // Set the content type
 header("Content-type: text/html; charset=UTF-8");
@@ -45,13 +48,11 @@ header("Content-type: text/html; charset=UTF-8");
 		<?php echo $messages; ?>
 	</div>
 	
-	<?php if (elgg_is_logged_in()): ?> 	
 	<div class="elgg-page-topbar">
 	       <div class="elgg-inner">
 	           <?php echo $topbar; ?>
 		</div>
 	</div>
-	<?php endif; ?>
 	
 	<div class="elgg-page-header">
 		<div class='elgg-inner'>	
@@ -61,14 +62,7 @@ header("Content-type: text/html; charset=UTF-8");
 
 
 	<div class="elgg-page-body">
-	<?php if (!elgg_is_logged_in()): ?> 	
-            <div class="custom-index">
-                <div class="elgg-module-featured">
-                    <?php echo $not_logged_in; ?>
-                </div>
-            </div>
-	<?php endif; ?>
-            <div class="elgg-inner">
+        <div class="elgg-inner">
 			<?php echo $body; ?>
 		</div>
 	</div>

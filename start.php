@@ -13,7 +13,7 @@ function pageparts_init() {
 //	elgg_register_plugin_hook_handler('public_pages', 'walled_garden', 'pageparts_public');
 
 	// add a menu item for the admin edit page
-	elgg_register_admin_menu_item('configure', 'pageparts', 'appearance');
+	elgg_register_admin_menu_item('configure', 'pages', 'appearance');
 
 	// add footer links
 	pageparts_setup_footer_menu();

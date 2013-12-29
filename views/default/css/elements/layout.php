@@ -119,3 +119,17 @@
 .elgg-page-footer a:hover {
 	color: #666;
 }
+.pageparts-topbar-info {
+    padding-top: 2px;
+    color: #EEE;
+    margin: 1px 15px 0px;
+}
+#elgg-widget-col-1 {
+	float: right;
+}
+#elgg-widget-col-2 {
+	float: left;
+}
+#elgg-widget-col-3 {
+	float: right;
+}
