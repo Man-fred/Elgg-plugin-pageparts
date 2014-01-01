@@ -8,13 +8,13 @@
 $type = $vars['type'];
 
 //set the url
-$url = $vars['url'] . "admin/site/pageparts?type=";
+$url = elgg_get_site_url() . "admin/site/pageparts";
  
-$pages = array('about', 'terms', 'privacy');
-$tabs = array();
+//$pages = array('about', 'terms', 'privacy', 'contact', 'guests', 'members');
+//$tabs = array();
 foreach ($pages as $page) {
 	$tabs[] = array(
-		'title' => elgg_echo("expages:$page"),
+		'title' => elgg_echo("pageparts:$page"),
 		'url' => "admin/appearance/pageparts?type=$page",
 		'selected' => $page == $type,
 	);

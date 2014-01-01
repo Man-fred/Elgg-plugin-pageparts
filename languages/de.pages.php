@@ -109,10 +109,10 @@ Schau Dir die neue Seite an und schreibe einen Kommentar:
 	 * Sidebar items
 	 */
 	'pages:sidebar:this' => "Diese Seite",
-	'pages:sidebar:children' => "Unter-Seiten",
+	'pages:sidebar:children' => "Unterseiten",
 	'pages:sidebar:parent' => "Übergeordnete Seite",
 
-	'pages:newchild' => "Eine Unter-Seite erstellen",
+	'pages:newchild' => "Eine Unterseite erstellen",
 	'pages:backtoparent' => "Zurück zu '%s'",
 );
 

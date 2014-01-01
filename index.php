@@ -12,7 +12,7 @@ $list_params = array(
 	'type' => 'object',
 	'limit' => 4,
 	'full_view' => false,
-	'view_type_toggle' => false,
+	'list_type_toggle' => false,
 	'pagination' => false,
 );
 
@@ -33,18 +33,24 @@ $list_params['subtype'] = 'event';
 $event_manager = elgg_list_entities($list_params);
 
 //grab the startpageinfos and latest pages
+$pageparts = unserialize(datalist_get('pageparts'));
+
 if (elgg_is_logged_in()) {
-	$startpage = "<h2>" . elgg_echo("welcome") . " ". elgg_get_logged_in_user_entity()->name."</h2>".
-			elgg_view_entity(get_entity(74), array('full_view' => true));
+	$startpage = "<h2>" . elgg_echo("welcome") . " ". elgg_get_logged_in_user_entity()->name."</h2>";
+	if (isset($pageparts['welcome_members'])) {
+		$startpage .= elgg_view_entity(get_entity($pageparts['welcome_members']), array('full_view' => true));
+	}
 } else {
-	$startpage =elgg_view_entity(get_entity(73), array('full_view' => true));
+	if (isset($pageparts['welcome_guests'])) {
+		$startpage = elgg_view_entity(get_entity($pageparts['welcome_guests']), array('full_view' => true));
+	}
 }
 $pages = elgg_list_entities(array(
 	'type' => 'object',
 	'subtype' => 'page',
 	'limit' => 1,
 	'full_view' => true,
-	'view_type_toggle' => false,
+	'list_type_toggle' => false,
 	'pagination' => false,
 ));
 
